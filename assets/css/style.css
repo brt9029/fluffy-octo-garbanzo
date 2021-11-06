@@ -25,6 +25,7 @@ body {
     white-space: pre-wrap;
     background-color: #e6e6e6;
     text-align: left;
+    border: none;
   }
   
   .time-block{

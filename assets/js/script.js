@@ -1,7 +1,7 @@
 let dateToday = moment().format("MMM DD YYYY");
 $('#currentDay').append(dateToday);
 
-let currentTime = moment().format("hA");
+let currentTime = moment().format("HHmm");
 
 let oldSchedule = [{
         time: "900",
@@ -71,15 +71,31 @@ function loadTasks () {
     }
 };
 
-// setInterval(function(){
-//     if(moment(`${currentTime}`).isAfter()){
-//         $(`#${schedule.time}`).addClass("bg-danger");
-//     }
-// }, 10);
+setInterval(function(){
+    for(let i = 0; i < oldSchedule.length; i++){
+        if(moment(currentTime).isBefore(oldSchedule[i].time)){
+            $(`#${oldSchedule[i].time}`).addClass("bg-success");
+        } if(moment(currentTime).isAfter(parseInt(oldSchedule[i].time) + 100)){
+            $(`#${oldSchedule[i].time}`).removeClass("bg-danger");
+            console.log(oldSchedule[i].time)
+        } if(moment(currentTime).isBetween(oldSchedule[i].time, (parseInt(oldSchedule[i].time) + 100).toString())){
+            $(`#${oldSchedule[i].time}`).addClass("bg-danger");
+        }
+    }
+}, 1800000);
 
-function checkTask() {
 
-};
-
-// load previously saved tasks on the schedule on page load 1800000
+setTimeout(function(){
+    for(let i = 0; i < oldSchedule.length; i++){
+        if(moment(currentTime).isBefore(oldSchedule[i].time)){
+            $(`#${oldSchedule[i].time}`).addClass("bg-success");
+        } if(moment(currentTime).isAfter(parseInt(oldSchedule[i].time) + 100)){
+            $(`#${oldSchedule[i].time}`).removeClass("bg-danger");
+            console.log(oldSchedule[i].time)
+        } if(moment(currentTime).isBetween(oldSchedule[i].time, (parseInt(oldSchedule[i].time) + 100).toString())){
+            $(`#${oldSchedule[i].time}`).addClass("bg-danger");
+        }
+    }
+}, 1);
+// load previously saved tasks on the schedule on page load 
 loadTasks();
