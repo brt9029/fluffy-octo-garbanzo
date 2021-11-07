@@ -1,6 +1,6 @@
 # fluffy-octo-garbanzo
 
-**Work Day Scheduler
+**Work Day Scheduler**
 - Allows you to save tasks based on a typical workday (9AM - 5PM)
 - Items saved will retain in local storage so long as they are saved prior to refreshing
 - Items not yet due will be highlighted green
